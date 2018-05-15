@@ -1,38 +1,24 @@
 const path = require('path');
 
-const DIST_DIR = path.join(__dirname, 'dist');
-const CLIENT_DIR = path.join(__dirname, 'src');
+const DIST_DIR = path.join(__dirname, "dist");
+const CLIENT_DIR = path.join(__dirname, "src");
 
 module.exports = {
   context: CLIENT_DIR,
-
-  entry: {
-    app: './app',
-  },
-
+  entry: './app',
   output: {
-    path: `${DIST_DIR}/bundle`,
-    filename: '[name].bundle.js',
+    path: DIST_DIR,
+    filename: 'bundle.js',
   },
-
   module: {
     rules: [{
       loader: 'babel-loader',
       test: /\.js$/,
-      exclude: /node_modules/,
+      exclude: /node_modules/
     }, {
-      loader: 'css-loader',
-      test: /\.css/,
-    }, {
-      test: /\.(png|jpg|gif)$/,
-      loader: 'file-loader',
-      include: DIST_DIR
+      loaders: ['style-loader', 'css-loader'],
+      test: /\.css$/,
     }]
   },
-
   devtool: 'cheap-module-eval-source-map',
-
-  devServer: {
-    contentBase: DIST_DIR,
-  },
 };
