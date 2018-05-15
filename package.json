@@ -1,0 +1,13 @@
+{
+  "name": "movie-manager",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "build": "webpack --watch",
+    "start": "node server",
+    "dev-start": "nodemon server"
+  },
+  "repository": "https://github.com/kbgar24/movie-manager.git",
+  "author": "Kendrick Gardner <kbgar24@gmail.com>",
+  "license": "MIT"
+}
