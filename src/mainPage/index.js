@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
+import MovieForm from '../movieForm';
 
-class MainPage extends Component {
+export default class MainPage extends Component {
   constructor() {
     super();
     this.state = {};
@@ -9,7 +10,10 @@ class MainPage extends Component {
   render() {
     console.log(this.state); 
     return (
-      <div>Hello World</div>
+      <div>
+        <div>Hello World</div>
+        <MovieForm />
+      </div>
     );
   }
 }
