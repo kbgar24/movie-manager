@@ -1,8 +1,6 @@
 const { Movie } = require('../db');
 
-const addMovie = ({ title, genre, rating, year, actors }) => {
-  new Movie({title, genre, rating, year, actors}).save();
-};
+const addMovie = movieInfo => new Movie(movieInfo).save();
 
 module.exports = {
   addMovie

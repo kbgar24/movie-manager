@@ -13,10 +13,10 @@ export default class MainPage extends Component {
     console.log(this.state); 
     return (
       <div>
-        {/* <MovieForm /> */}
+        <MovieForm />
         <hr/>
         {/* <Library /> */}
-        <Search />
+        {/* <Search /> */}
       </div>
     );
   }

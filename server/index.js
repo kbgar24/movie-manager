@@ -3,6 +3,7 @@ const path = require('path');
 const morgan = require('morgan');
 const db = require('../db');
 const queries = require('../db/queries');
+const bodyParser = require('body-parser');
 
 const app = express();
 
@@ -10,6 +11,7 @@ const DIST_DIR = path.join(__dirname, "../dist");
 const CLIENT_DIR = path.join(__dirname, "../src/");
 const port = process.env.PORT || 3001;
 
+app.use(bodyParser.json())
 app.use(express.static(DIST_DIR));
 app.use(morgan('dev'));
 
@@ -19,6 +21,7 @@ app.get('*', (req, res) => {
 
 app.post('/api/addMovie', (req, res) => {
   const { movieInfo } = req.body;
+  console.log('movieInfo: ', movieInfo);
   queries.addMovie(movieInfo)
   .then((response) => {
     console.log('Successfully saved new movie to DB');

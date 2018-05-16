@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { Button, Checkbox, Form, Input, Radio, Select, TextArea, List } from 'semantic-ui-react';
+import axios from 'axios';
 
 const genreOptions = [
   { key: 'h', text: 'Horror', value: 'horror' },
@@ -33,9 +34,6 @@ export default class MovieForm extends Component {
     actor && this.setState({
       actors: [...actors, actor],
       actor: '',
-      title: '',
-      year: '',
-      genre: '',
     });
   }
 
@@ -49,6 +47,15 @@ export default class MovieForm extends Component {
       } 
     }
     this.setState({ [type]: value });
+  }
+
+  handleSubmit = () => {
+    const { actors, title, year, genre, rating } = this.state;
+    const movieInfo = { actors, title, year, genre, rating };
+    console.log('movieInfo: ', movieInfo);
+    axios.post('/api/addMovie', { movieInfo } )
+    .then(() => { console.log('Successfully added movie') })
+    .catch((e) => { console.error('Error adding note!') });
   }
 
   render() {
@@ -71,7 +78,7 @@ export default class MovieForm extends Component {
           <Form.Field control={Input} label='Actor' placeholder='Actor' value={this.state.actor} onChange={this.handleChange} />
           <Button onClick={this.handleAddActor}>Add Actors</Button>
         </Form.Group>
-        <Form.Field control={Button}>Submit</Form.Field>
+        <Form.Field control={Button} onClick={this.handleSubmit}>Submit</Form.Field>
       </Form>
         </div>
     )
