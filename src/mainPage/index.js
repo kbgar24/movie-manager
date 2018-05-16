@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import Search from '../components/search';
 import MovieFormContainer from '../containers/movieFormContainer';
 import LibraryContainer from '../containers/libraryContainer';
 
@@ -16,7 +15,6 @@ export default class MainPage extends Component {
         <MovieFormContainer />
         <hr/>
         <LibraryContainer />
-        <Search />
       </div>
     );
   }
