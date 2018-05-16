@@ -71,6 +71,8 @@ export default class Library extends Component {
               </Card.Header>
               <Card.Meta>
                 {movie.year}
+                <Image style={{ height: '18px', display: 'block' }} src={`/assets/img/${movie.mpaa}.png`} />
+              
               </Card.Meta>
               <Card.Description>
                 <p><strong>Genre: </strong>{movie.genre}</p>
