@@ -15,9 +15,13 @@ const movieSchema = new mongoose.Schema({
   genre: String,
   rating: String,
   year: String,
+  mpaa: String,
   actors: [],
   imageUrl: String,
-  lastUpdatedAt: Date,
+  createdAt: {
+    type: Date,
+    default: Date.now,
+  },
 });
 
 const Movie = mongoose.model('movie', movieSchema);
