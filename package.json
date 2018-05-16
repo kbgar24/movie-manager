@@ -7,6 +7,9 @@
     "start": "node server",
     "dev-start": "nodemon server"
   },
+  "nodemonConfig": {
+    "ignore": ["src/*", "dist/*"]
+  },
   "repository": "https://github.com/kbgar24/movie-manager.git",
   "author": "Kendrick Gardner <kbgar24@gmail.com>",
   "license": "MIT",
@@ -21,6 +24,7 @@
     "body-parser": "^1.18.2",
     "css-loader": "^0.28.11",
     "express": "^4.16.2",
+    "lodash": "^4.17.10",
     "mongoose": "^5.1.1",
     "morgan": "^1.9.0",
     "react": "^16.2.0",

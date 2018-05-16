@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { Card, Icon, Image } from 'semantic-ui-react'
 import axios from 'axios';
-
+import Search from './search';
 
 
 const cardContainer = {
@@ -24,6 +24,10 @@ const starStyle = {
 export default class Library extends Component {
   constructor(props){
     super(props);
+    this.state = {
+      movies: props.movies,
+      visibleMovies: props.movies,
+    }
  
   }
 
@@ -31,10 +35,21 @@ export default class Library extends Component {
     this.props.getMovies();
   }
 
+  static getDerivedStateFromProps = ({movies}, prevState) => ({ 
+    ...prevState,
+    movies,
+    visibleMovies: movies,
+  })
+
+  updateVisibleMovies = (visibleMovies) => {
+    this.setState({ visibleMovies })
+  }
+
   render() {
     return (
       <div style={cardContainer}>
-        { this.props.movies.map((movie, i) => (
+        <Search updateVisibleMovies={this.updateVisibleMovies} movies={this.state.movies}/>
+        { this.state.visibleMovies.map((movie, i) => (
           <Card key={i} style={cardCSS}>
             <Image style={{ height: '300px', width: '200px', margin: '0px auto' }} src='https://ia.media-imdb.com/images/M/MV5BYTYxNGMyZTYtMjE3MS00MzNjLWFjNmYtMDk3N2FmM2JiM2M1XkEyXkFqcGdeQXVyNjY5NDU4NzI@._V1_UX182_CR0,0,182,268_AL_.jpg' />
             <Card.Content>
