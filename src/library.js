@@ -5,7 +5,7 @@ const data = [
   {
     title: 'The Lion King',
     year: '1994',
-    actors: ['Simba', 'Mufasa', 'Nala', 'Scar'],
+    actors: ['Denzel Washington', 'Halle Berry', 'James Dolan', 'Beyonce Knowles', 'Denzel Washington', 'Halle Berry', 'James Dolan', 'Beyonce Knowles'],
     genre: 'Animation',
     rating: 5
   },
@@ -74,12 +74,13 @@ export default class Library extends Component {
                 {movie.year}
               </Card.Meta>
               <Card.Description>
-                <h4>Starring: </h4>
-                { 
-                  movie.actors.map((actor, i) => (
-                    <div key={i}>{actor}</div>
-                  ))
-                }
+                <p><strong>Genre: </strong>{movie.genre}</p>
+                <strong>Starring: </strong>
+                <p style={{  }}>
+                  { 
+                    movie.actors.join(', ')
+                  }
+                </p>
         </Card.Description>
             </Card.Content>
             <Card.Content extra>
