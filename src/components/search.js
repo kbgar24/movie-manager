@@ -144,9 +144,7 @@ export default class Search extends Component {
             <Form.Field control={Select} label='Genre' options={genreOptions} placeholder='Genre' value={this.state.genre} onChange={this.handleChange} />
             <Form.Field control={Select} label='Rating' options={ratingOptions} placeholder='Rating' value={this.state.rating} onChange={this.handleChange} />
             <Form.Field control={Input} label='Actor' placeholder='Actor' value={this.state.actor} onChange={this.handleChange} />
-            <Button onClick={this.handleAddActor}>Add Actors</Button>
           </Form.Group>
-          <Form.Field control={Button}>Submit</Form.Field>
         </Form>
       </div>
     )

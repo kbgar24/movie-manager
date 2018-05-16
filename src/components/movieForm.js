@@ -18,16 +18,18 @@ const ratingOptions = [
 ];
 
 export default class MovieForm extends Component {
-  state = {
-    actors: [],
-    actor: '',
-    title: '', 
-    year: '',
-    rating: '',
-    genre: '',
+  constructor(props){
+    super(props)
+    this.state = {
+      actors: [],
+      actor: '',
+      title: '',
+      year: '',
+      rating: '',
+      genre: '',
+    }
   }
 
-  handleChange = (e, { value }) => this.setState({ value })
 
   handleAddActor = (e) => {
     const { actor, actors } = this.state;
@@ -53,9 +55,8 @@ export default class MovieForm extends Component {
     const { actors, title, year, genre, rating } = this.state;
     const movieInfo = { actors, title, year, genre, rating };
     console.log('movieInfo: ', movieInfo);
-    axios.post('/api/addMovie', { movieInfo } )
-    .then(() => { console.log('Successfully added movie') })
-    .catch((e) => { console.error('Error adding note!') });
+    this.props.addMovie(movieInfo);
+    
   }
 
   render() {

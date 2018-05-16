@@ -1,9 +1,15 @@
 import axios from 'axios';
 
-export const addMovie = movieInfo => ({
-  type: 'ADD_MOVIE',
-  payload: movieInfo,
-});
+export const addMovie = movieInfo => (
+  dispatch => (
+    axios.post('api/addMovie', { movieInfo })
+    .then(() => {
+      dispatch(getMovies())
+    })
+    .catch((e) => { console.error(e) })
+  )
+);
+
 
 export const deleteMovie = movieId => ({
   type: 'DELETE_MOVIE',
@@ -18,8 +24,9 @@ export const setMovies = movies => ({
 export const getMovies = () => (
   dispatch => (
     axios.get('/api/getMovies')
-    .then(({data}) => {
-      dispatch(setMovies(data))
+    .then((res) => {
+      console.log('res: ', res);
+      dispatch(setMovies(res.data))
     })
     .catch((e) => { console.error(e) })
   )

@@ -6,4 +6,4 @@ const mapDispatchToProps = dispatch => ({
   addMovie: movieInfo => dispatch(addMovie(movieInfo)),
 });
 
-export default connect(mapDispatchToProps)(MovieForm);
+export default connect(null, mapDispatchToProps)(MovieForm);

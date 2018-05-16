@@ -22,6 +22,7 @@ app.post('/api/addMovie', (req, res) => {
   queries.addMovie(movieInfo)
   .then((response) => {
     console.log('Successfully saved new movie to DB');
+    res.end();
   })
   .catch((e) => {
     console.error('Error saving movie to DB: ', e);
