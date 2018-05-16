@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import Search from '../search';
+import Search from '../components/search';
 import MovieFormContainer from '../containers/movieFormContainer';
 import LibraryContainer from '../containers/libraryContainer';
 

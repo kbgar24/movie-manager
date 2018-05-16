@@ -1,3 +1,4 @@
 node_modules/
-dist/bundle.js
+dist/main.js
+dist/vendor.js
 yarn-error.log

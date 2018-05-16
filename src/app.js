@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import { Provider, connect } from 'react-redux';
-import store from '../src/store';
+import store from './store';
 
 import MainPage from './mainPage';
 
@@ -17,9 +17,13 @@ const App = () => (
   </div>
 );
 
+// console.log('store: ', store)
+window.store = store;
+
+
 ReactDOM.render(
   <Provider store={store}>
-    <App />,
-  </Provider>
+    <App />
+  </Provider>,
   document.getElementById('app')
 );
