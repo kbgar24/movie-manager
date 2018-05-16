@@ -1,8 +1,8 @@
 const mongoose = require('mongoose');
 
-const mongoDB = 'mongodb://127.0.0.1/movie_database'
+const URI = 'mongodb://kindHealth:kindHealth@ds259325.mlab.com:59325/movies'
 
-mongoose.connect(mongoDB)
+mongoose.connect(URI)
   .then(() => { console.log('✅  Successfully connected to Mongodb'); })
   .catch((e) => { console.error('⚠️ Error connected to MongoDB: ', e); });
 
