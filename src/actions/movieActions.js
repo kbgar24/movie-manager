@@ -15,7 +15,6 @@ export const setMovies = movies => ({
   payload: movies,
 });
 
-
 export const getMovies = () => (
   dispatch => (
     axios.get('/api/getMovies')
