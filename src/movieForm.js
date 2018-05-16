@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Button, Checkbox, Form, Input, Radio, Select, TextArea } from 'semantic-ui-react'
+import { Button, Checkbox, Form, Input, Radio, Select, TextArea, List } from 'semantic-ui-react';
 
 const genreOptions = [
   { key: 'h', text: 'Horror', value: 'horror' },
@@ -16,45 +16,64 @@ const ratingOptions = [
   { key: '5', text: '1', value: '1' },
 ];
 
-
-
-
-class FormExampleFieldControl extends Component {
+export default class MovieForm extends Component {
   state = {
-    actors = [];
+    actors: [],
+    actor: '',
+    title: '', 
+    year: '',
+    rating: '',
+    genre: '',
   }
 
   handleChange = (e, { value }) => this.setState({ value })
 
+  handleAddActor = (e) => {
+    const { actor, actors } = this.state;
+    actor && this.setState({
+      actors: [...actors, actor],
+      actor: '',
+      title: '',
+      year: '',
+      genre: '',
+    });
+  }
+
+  handleChange = (e, data) => {
+    const { value, placeholder } = data;
+    const type = placeholder.toLowerCase();
+    const isNumber = (string) => /^\d+$/.test(string);
+    if (type === 'year'){
+      if (value.length > 4 || !isNumber(string)){
+        return;
+      } 
+    }
+    this.setState({ [type]: value });
+  }
+
   render() {
     const { value } = this.state
     return (
+      <div>
       <List>
         { 
-          this.state.actors.map(actor => (
-            <List.Item>Actor</List.Item>
+          this.state.actors.map((actor, i) => (
+            <List.Item key={i}>{actor}</List.Item>
           )) 
         }
       </List>
       <Form>
         <Form.Group widths='equal'>
-          <Form.Field control={Input} label='Title' placeholder='Title' />
-          <Form.Field control={Input} label='Year' placeholder='Year' />
-          <Form.Field control={Select} label='Genre' options={genreOptions} placeholder='Genre' />
-          <Form.Field control={Select} label='Rating' options={ratingOptions} placeholder='Rating' />
+          <Form.Field control={Input} label='Title' placeholder='Title' value={this.state.title} onChange={this.handleChange} />
+          <Form.Field control={Input} label='Year' placeholder='Year' value={this.state.year} onChange={this.handleChange} />
+          <Form.Field control={Select} label='Genre' options={genreOptions} placeholder='Genre' value={this.state.genre} onChange={this.handleChange} />
+          <Form.Field control={Select} label='Rating' options={ratingOptions} placeholder='Rating' value={this.state.rating} onChange={this.handleChange} />
+          <Form.Field control={Input} label='Actor' placeholder='Actor' value={this.state.actor} onChange={this.handleChange} />
+          <Button onClick={this.handleAddActor}>Add Actors</Button>
         </Form.Group>
-        <Form.Group inline>
-          <label>Quantity</label>
-          <Form.Field control={Radio} label='One' value='1' checked={value === '1'} onChange={this.handleChange} />
-          <Form.Field control={Radio} label='Two' value='2' checked={value === '2'} onChange={this.handleChange} />
-          <Form.Field control={Radio} label='Three' value='3' checked={value === '3'} onChange={this.handleChange} />
-        </Form.Group>
-        <Form.Field control={TextArea} label='About' placeholder='Tell us more about you...' />
-        <Form.Field control={Checkbox} label='I agree to the Terms and Conditions' />
         <Form.Field control={Button}>Submit</Form.Field>
       </Form>
+        </div>
     )
   }
 }
-
-export default FormExampleFieldControl
