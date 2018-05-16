@@ -45,12 +45,17 @@ export default class Library extends Component {
     this.setState({ visibleMovies })
   }
 
+  handleDelete = (_id) => {
+    this.props.deleteMovie(_id);
+  }
+
   render() {
     return (
       <div style={cardContainer}>
         <Search updateVisibleMovies={this.updateVisibleMovies} movies={this.state.movies}/>
         { this.state.visibleMovies.map((movie, i) => (
           <Card key={i} style={cardCSS}>
+            <span onClick={(e) => { this.handleDelete(movie._id) }}>x</span>
             <Image style={{ height: '300px', width: '200px', margin: '0px auto' }} src={ movie.imageUrl } />
             <Card.Content>
               <Card.Header>

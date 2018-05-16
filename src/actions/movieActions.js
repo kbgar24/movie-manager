@@ -15,7 +15,7 @@ export const addMovie = movieInfo => (
         ...movieInfo,
         imageUrl,
       }
-      axios.post('api/addMovie', { movieInfo: finalMovieInfo })
+      axios.post('/api/addMovie', { movieInfo: finalMovieInfo })
       .then(() => {
         dispatch(getMovies())
       })
@@ -33,10 +33,15 @@ export const addMovie = movieInfo => (
 );
 
 
-export const deleteMovie = movieId => ({
-  type: 'DELETE_MOVIE',
-  payload: movieId,
-});
+export const deleteMovie = _id => (
+  dispatch => (
+    axios.post('/api/deleteMovie', { _id })
+    .then(() => {
+      dispatch(getMovies())
+    })
+    .catch((e) => { console.error(e) })
+  )
+);
 
 export const setMovies = movies => ({
   type: 'SET_MOVIES',

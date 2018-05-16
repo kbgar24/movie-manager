@@ -34,6 +34,19 @@ app.post('/api/addMovie', (req, res) => {
   })
 });
 
+app.post('/api/deleteMovie', (req, res) => {
+  const { _id } = req.body;
+  queries.deleteMovie(_id)
+  .then((response) => {
+    console.log('Successfully deleted movie from DB!');
+    res.end();
+  })
+  .catch((e) => {
+    console.error('Error deleting movie from DB: ', e);
+    res.sendStatus(500).end();
+  })
+});
+
 app.get('/api/getMovies', (req, res) => {
   queries.getAllMovies()
   .then((movies) => {
