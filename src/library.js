@@ -43,6 +43,12 @@ const cardCSS = {
   margin: '40px',
 }
 
+const starStyle = {
+  right: '15px',
+  position: 'absolute',
+  marginTop: '-25px',
+}
+
 export default class Library extends Component {
   state = { }
 
@@ -55,17 +61,20 @@ export default class Library extends Component {
             <Card.Content>
               <Card.Header>
                 {movie.title}
+                <div style={starStyle}>
+                  {
+                    Array(Number(movie.rating)).fill().map((e, i) => (
+                      <Image key={i} style={{ height: '15px', width: '15px', margin: '0px auto' }} src='https://cdn2.iconfinder.com/data/icons/august/PNG/Star%20Gold.png' />
+                    ))
+                  }
+                </div>
+
               </Card.Header>
               <Card.Meta>
                 {movie.year}
-                <br/>
-                {
-                  Array(Number(movie.rating)).fill().map((e, i) => (
-                    <Image key={i} style={{ height: '15px', width: '15px', margin: '0px auto' }} src='https://cdn2.iconfinder.com/data/icons/august/PNG/Star%20Gold.png' />
-                  ))
-                }
               </Card.Meta>
               <Card.Description>
+                <h4>Starring: </h4>
                 { 
                   movie.actors.map((actor, i) => (
                     <div key={i}>{actor}</div>
