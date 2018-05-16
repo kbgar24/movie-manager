@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import MovieForm from '../movieForm';
 import Library from '../library';
+import Search from '../search';
 
 export default class MainPage extends Component {
   constructor() {
@@ -12,9 +13,10 @@ export default class MainPage extends Component {
     console.log(this.state); 
     return (
       <div>
-        <MovieForm />
+        {/* <MovieForm /> */}
         <hr/>
-        <Library />
+        {/* <Library /> */}
+        <Search />
       </div>
     );
   }
