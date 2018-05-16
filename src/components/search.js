@@ -84,12 +84,46 @@ export default class Search extends Component {
 
   handleSearch = () => {
     console.log('handlSearch called!');
-    const { title } = this.state;
-    console.log('title: ', title);
-    const formattedTitle = title.toLowerCase().trim();
-    const results = data.filter((movie) => (
-      movie.title.toLowerCase().includes(formattedTitle)
-    ));
+    const { title, year, genre, rating, actor } = this.state;
+    let results;
+    if (title) {
+      results = searchByTitle(title);
+    } 
+    if ()
+
+    function searchByTitle(title){
+      const formattedTitle = title.toLowerCase().trim();
+      data.filter((movie) => {}
+        movie.title.toLowerCase().includes(formattedTitle)
+      ));
+      return results;
+    }
+
+    function searchByYear(year, data) {
+      return data.filter((movie) => (
+        movie.year === year
+      ));
+      return results;
+    }
+
+    function searchByGenre(genre, data) {
+      return data.filter((movie) => (
+        movie.genre === genre
+      ));
+    }
+
+    function searchByRating(rating, data) {
+      return data.filter((movie) => (
+        movie.rating === rating
+      ));
+
+    }
+
+    function searchByActor(actor, data){ 
+      return data.filter((movie) => (
+        movie.actors.map((actor) => actor.toLowerCase()).includes(actor.toLowerCase().trim())
+      ));
+    }
 
     console.log('results: ', results);
 

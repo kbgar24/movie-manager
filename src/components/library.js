@@ -2,36 +2,7 @@ import React, { Component } from 'react'
 import { Card, Icon, Image } from 'semantic-ui-react'
 import axios from 'axios';
 
-const data = [
-  {
-    title: 'The Lion King',
-    year: '1994',
-    actors: ['Denzel Washington', 'Halle Berry', 'James Dolan', 'Beyonce Knowles', 'Denzel Washington', 'Halle Berry', 'James Dolan', 'Beyonce Knowles'],
-    genre: 'Animation',
-    rating: 5
-  },
-  {
-    title: 'The Lion King',
-    year: '1994',
-    actors: ['Simba', 'Mufasa', 'Nala', 'Scar'],
-    genre: 'Animation',
-    rating: 4
-  },
-  {
-    title: 'The Lion King',
-    year: '1994',
-    actors: ['Simba', 'Mufasa', 'Nala', 'Scar'],
-    genre: 'Animation',
-    rating: 3
-  },
-  {
-    title: 'The Lion King',
-    year: '1994',
-    actors: ['Simba', 'Mufasa', 'Nala', 'Scar'],
-    genre: 'Animation',
-    rating: 1
-  }
-]
+
 
 const cardContainer = {
   // display: 'flex',
