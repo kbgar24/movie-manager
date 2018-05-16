@@ -43,8 +43,8 @@ export default class MovieForm extends Component {
     const { value, placeholder } = data;
     const type = placeholder.toLowerCase();
     const isNumber = (string) => /^\d+$/.test(string);
-    if (type === 'year'){
-      if (value.length > 4 || !isNumber(string)){
+    if (type === 'year' && value.length){
+      if (value.length > 4 || !isNumber(value)){
         return;
       } 
     }
