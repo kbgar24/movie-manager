@@ -23,6 +23,8 @@ const mpaaRatingOptions = [
   { key: '3', text: 'PG-13', value: 'PG-13' },
   { key: '4', text: 'R', value: 'R' },
   { key: '5', text: 'NC-17', value: 'NC-17' },
+  { key: '6', text: 'Unrated', value: 'Unrated' },
+  
 ];
 
 export default class MovieForm extends Component {
