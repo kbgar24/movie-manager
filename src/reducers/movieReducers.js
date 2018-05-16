@@ -4,7 +4,7 @@ const defaultState = {
 
 const movieReducer = ( state = defaultState, action ) => {
   switch(action.type){
-    case 'GET_MOVIES': {
+    case 'SET_MOVIES': {
       return {
         ...state,
         movies: action.payload
@@ -14,7 +14,7 @@ const movieReducer = ( state = defaultState, action ) => {
       return {
         ...state,
         movies: [
-          ...state.movies.slice(),
+          ...state.movies
           action.payload
         ]
       }
