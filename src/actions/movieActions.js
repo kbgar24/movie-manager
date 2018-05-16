@@ -48,6 +48,11 @@ export const setMovies = movies => ({
   payload: movies,
 });
 
+export const sortBy = (criteria, order) => ({
+  type: `SORT_BY_${criteria}`,
+  payload: order,
+})
+
 export const getMovies = () => (
   dispatch => (
     axios.get('/api/getMovies')

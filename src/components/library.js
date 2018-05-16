@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Card, Icon, Image } from 'semantic-ui-react'
+import { Card, Icon, Image, Dropdown } from 'semantic-ui-react'
 import axios from 'axios';
 import Search from './search';
 
@@ -21,12 +21,26 @@ const starStyle = {
   marginTop: '-25px',
 }
 
+const sortOptions = [
+  { key: '1', value: 'TITLE', text: 'Title' },
+  { key: '2', value: 'RELEASE', text: 'Release Date' },
+  { key: '3', value: 'CREATED', text: 'Date Added' },
+];
+
+const orderOptions = [
+  { key: '1', value: 1, text: 'Ascedending' },
+  { key: '2', value: -1, text: 'Descending' },
+]
+
+
 export default class Library extends Component {
   constructor(props){
     super(props);
     this.state = {
       movies: props.movies,
       visibleMovies: props.movies,
+      sortBy: 'TITLE',
+      order: 1,
     }
  
   }
@@ -49,9 +63,25 @@ export default class Library extends Component {
     this.props.deleteMovie(_id);
   }
 
+  handleChange = (e, {placeholder, value}) => {
+    if (placeholder === 'Sort By'){
+      this.setState({ sortBy: value }, this.handleSort)
+    } else {
+      this.setState({ order: value }, this.handleSort)
+    }
+  }
+
+  handleSort = () => {
+    const { sortBy, order } = this.state;
+    this.props.sortBy(sortBy, order);
+  }
+
   render() {
     return (
       <div style={cardContainer}>
+        <Dropdown placeholder='Sort By' options={sortOptions} onChange={this.handleChange}/>
+        <Dropdown placeholder='Order' options={orderOptions} onChange={this.handleChange}/>
+        
         <Search updateVisibleMovies={this.updateVisibleMovies} movies={this.state.movies}/>
         { this.state.visibleMovies.map((movie, i) => (
           <Card key={i} style={cardCSS}>

@@ -20,6 +20,7 @@ const ratingOptions = [
 ];
 
 const mpaaRatingOptions = [
+  { key: 'null', text: '', value: '' },
   { key: '1', text: 'G', value: 'G' },
   { key: '2', text: 'PG', value: 'PG' },
   { key: '3', text: 'PG-13', value: 'PG-13' },
@@ -102,7 +103,9 @@ export default class Search extends Component {
             <Form.Field control={Select} label='Rating' options={ratingOptions} placeholder='Rating' value={this.state.rating} onChange={this.debouncedHandleChange} />
             <Form.Field control={Select} label='MPAA' options={mpaaRatingOptions} placeholder='MPAA' value={this.state.mpaa} onChange={this.handleChange} />
             <Form.Field control={Input} label='Actor' placeholder='Actor' value={this.state.actor} onChange={this.debouncedHandleChange} />
+            
           </Form.Group>
+          
         </Form>
       </div>
     )
