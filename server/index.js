@@ -15,6 +15,10 @@ app.use(bodyParser.json())
 app.use(express.static(DIST_DIR));
 app.use(morgan('dev'));
 
+app.get('/', (req, res) => {
+  res.sendFile(path.join(DIST_DIR, 'index.html'));
+});
+
 
 app.post('/api/addMovie', (req, res) => {
   const { movieInfo } = req.body;
@@ -30,7 +34,7 @@ app.post('/api/addMovie', (req, res) => {
   })
 });
 
-app.get('/api/getAllMovies', (req, res) => {
+app.get('/api/getMovies', (req, res) => {
   queries.getAllMovies()
   .then((movies) => {
     res.send(movies)
@@ -42,7 +46,7 @@ app.get('/api/getAllMovies', (req, res) => {
 })
 
 app.get('*', (req, res) => {
-  res.sendFile(path.join(DIST_DIR, 'index.html'));
+  res.sendStatus(404).end();
 });
 
 

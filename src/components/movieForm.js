@@ -56,6 +56,13 @@ export default class MovieForm extends Component {
     const movieInfo = { actors, title, year, genre, rating };
     console.log('movieInfo: ', movieInfo);
     this.props.addMovie(movieInfo);
+    this.setState({
+      actor: '',
+      title: '',
+      rating: '',
+      genre: '',
+      actors: []
+    })
     
   }
 

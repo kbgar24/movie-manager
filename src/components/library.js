@@ -22,18 +22,19 @@ const starStyle = {
 }
 
 export default class Library extends Component {
-  state = { }
+  constructor(props){
+    super(props);
+ 
+  }
 
   componentDidMount(){
-    axios.get('/api/getAllMovies')
-    .then((movies) => { console.log('movies: ', movies) })
-    .catch((e) => { console.error(e) })
+    this.props.getMovies();
   }
 
   render() {
     return (
       <div style={cardContainer}>
-        { data.map((movie, i) => (
+        { this.props.movies.map((movie, i) => (
           <Card key={i} style={cardCSS}>
             <Image style={{ height: '300px', width: '200px', margin: '0px auto' }} src='https://ia.media-imdb.com/images/M/MV5BYTYxNGMyZTYtMjE3MS00MzNjLWFjNmYtMDk3N2FmM2JiM2M1XkEyXkFqcGdeQXVyNjY5NDU4NzI@._V1_UX182_CR0,0,182,268_AL_.jpg' />
             <Card.Content>
