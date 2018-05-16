@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { Card, Icon, Image } from 'semantic-ui-react'
+import axios from 'axios';
 
 const data = [
   {
@@ -51,6 +52,12 @@ const starStyle = {
 
 export default class Library extends Component {
   state = { }
+
+  componentDidMount(){
+    axios.get('/api/getAllMovies')
+    .then((movies) => { console.log('movies: ', movies) })
+    .catch((e) => { console.error(e) })
+  }
 
   render() {
     return (

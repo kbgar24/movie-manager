@@ -15,9 +15,6 @@ app.use(bodyParser.json())
 app.use(express.static(DIST_DIR));
 app.use(morgan('dev'));
 
-app.get('*', (req, res) => {
-  res.sendFile(path.join(DIST_DIR, 'index.html'));
-});
 
 app.post('/api/addMovie', (req, res) => {
   const { movieInfo } = req.body;
@@ -31,6 +28,22 @@ app.post('/api/addMovie', (req, res) => {
     res.sendStatus(500).end();
   })
 });
+
+app.get('/api/getAllMovies', (req, res) => {
+  queries.getAllMovies()
+  .then((movies) => {
+    res.send(movies)
+  })
+  .catch((e) => {
+    console.error('Error getting all movies: ', e);
+    res.sendStatus(500).end();
+  })
+})
+
+app.get('*', (req, res) => {
+  res.sendFile(path.join(DIST_DIR, 'index.html'));
+});
+
 
 app.listen(port, () => {
   console.log(`Listening on port ${port}`);

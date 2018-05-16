@@ -15,7 +15,7 @@ export default class MainPage extends Component {
       <div>
         <MovieForm />
         <hr/>
-        {/* <Library /> */}
+        <Library />
         {/* <Search /> */}
       </div>
     );
