@@ -51,7 +51,7 @@ export default class Library extends Component {
         <Search updateVisibleMovies={this.updateVisibleMovies} movies={this.state.movies}/>
         { this.state.visibleMovies.map((movie, i) => (
           <Card key={i} style={cardCSS}>
-            <Image style={{ height: '300px', width: '200px', margin: '0px auto' }} src='https://ia.media-imdb.com/images/M/MV5BYTYxNGMyZTYtMjE3MS00MzNjLWFjNmYtMDk3N2FmM2JiM2M1XkEyXkFqcGdeQXVyNjY5NDU4NzI@._V1_UX182_CR0,0,182,268_AL_.jpg' />
+            <Image style={{ height: '300px', width: '200px', margin: '0px auto' }} src={ movie.imageUrl } />
             <Card.Content>
               <Card.Header>
                 {movie.title}

@@ -8,7 +8,10 @@
     "dev-start": "nodemon server"
   },
   "nodemonConfig": {
-    "ignore": ["src/*", "dist/*"]
+    "ignore": [
+      "src/*",
+      "dist/*"
+    ]
   },
   "repository": "https://github.com/kbgar24/movie-manager.git",
   "author": "Kendrick Gardner <kbgar24@gmail.com>",

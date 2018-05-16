@@ -61,6 +61,7 @@ export default class MovieForm extends Component {
       title: '',
       rating: '',
       genre: '',
+      year: '',
       actors: []
     })
     

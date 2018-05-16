@@ -16,6 +16,7 @@ const movieSchema = new mongoose.Schema({
   rating: String,
   year: String,
   actors: [],
+  imageUrl: String,
   lastUpdatedAt: Date,
 });
 
