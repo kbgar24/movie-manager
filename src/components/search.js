@@ -19,6 +19,17 @@ const ratingOptions = [
   { key: '5', text: '1', value: '1' },
 ];
 
+const mpaaRatingOptions = [
+  { key: '1', text: 'G', value: 'G' },
+  { key: '2', text: 'PG', value: 'PG' },
+  { key: '3', text: 'PG-13', value: 'PG-13' },
+  { key: '4', text: 'R', value: 'R' },
+  { key: '5', text: 'NC-17', value: 'NC-17' },
+  { key: '6', text: 'Unrated', value: 'Unrated' },
+  
+];
+
+
 export default class Search extends Component {
   constructor(){
     super()
@@ -29,19 +40,12 @@ export default class Search extends Component {
       year: '',
       rating: '',
       genre: '',
+      mpaa: '',
     }
     this.debouncedHandleChange = this.handleChange
   }
   
-  handleAddActor = (e) => {
-    const { actor, actors } = this.state;
-    actor && this.setState({
-      actor: '',
-      title: '',
-      year: '',
-      genre: '',
-    });
-  }
+
 
   handleChange = (e, data) => {
     const { value, placeholder } = data;
@@ -59,7 +63,7 @@ export default class Search extends Component {
 
 
   filterVideos = () => {
-    const { title, year, genre, rating, actor } = this.state;
+    const { title, year, genre, rating, actor, mpaa } = this.state;
     const { movies } = this.props;
     const visibleMovies = movies.filter((movie) => {
       if (title && !movie.title.toLowerCase().includes(title.toLowerCase())){
@@ -72,6 +76,9 @@ export default class Search extends Component {
         return false;
       }
       if (rating && movie.rating !== rating){
+        return false;
+      }
+      if (mpaa && movie.mpaa !== mpaa){
         return false;
       }
       if (actor && !movie.actors.map(char => char.toLowerCase()).some(ch => ch.includes(actor.toLowerCase()))){
@@ -93,6 +100,7 @@ export default class Search extends Component {
             <Form.Field control={Input} label='Year' placeholder='Year' value={this.state.year} onChange={this.debouncedHandleChange} />
             <Form.Field control={Select} label='Genre' options={genreOptions} placeholder='Genre' value={this.state.genre} onChange={this.debouncedHandleChange} />
             <Form.Field control={Select} label='Rating' options={ratingOptions} placeholder='Rating' value={this.state.rating} onChange={this.debouncedHandleChange} />
+            <Form.Field control={Select} label='MPAA' options={mpaaRatingOptions} placeholder='MPAA' value={this.state.mpaa} onChange={this.handleChange} />
             <Form.Field control={Input} label='Actor' placeholder='Actor' value={this.state.actor} onChange={this.debouncedHandleChange} />
           </Form.Group>
         </Form>
