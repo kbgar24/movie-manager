@@ -20,7 +20,7 @@ const App = () => (
           <Switch>
             <Route path='/' exact={true} component={Library} />
             <Route path='/addFilm' exact={true} component={MovieForm} />
-            <Route path='/advancedSearch' exact={true} component={Search} />
+            <Route path='/advancedSearch' exact={true} render={(props) => <Library {...props} showSearch={true} />}/>
             <Route  component={NotFound} />
           </Switch>
         </div>

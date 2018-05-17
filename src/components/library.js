@@ -41,6 +41,7 @@ export default class Library extends Component {
       visibleMovies: props.movies,
       sortBy: 'TITLE',
       order: 1,
+      showSearch: false,
     }
  
   }
@@ -49,10 +50,11 @@ export default class Library extends Component {
     this.props.getMovies();
   }
 
-  static getDerivedStateFromProps = ({movies}, prevState) => ({ 
+  static getDerivedStateFromProps = ({movies, showSearch}, prevState) => ({ 
     ...prevState,
     movies,
     visibleMovies: movies,
+    showSearch,
   })
 
   updateVisibleMovies = (visibleMovies) => {
@@ -79,10 +81,13 @@ export default class Library extends Component {
   render() {
     return (
       <div style={cardContainer}>
-        <Dropdown placeholder='Sort By' options={sortOptions} onChange={this.handleChange}/>
-        <Dropdown placeholder='Order' options={orderOptions} onChange={this.handleChange}/>
-        
-        <Search updateVisibleMovies={this.updateVisibleMovies} movies={this.state.movies}/>
+        <div>
+          { this.state.showSearch && <Search updateVisibleMovies={this.updateVisibleMovies} movies={this.state.movies}/> }
+        </div>
+        <div>
+          <Dropdown placeholder='Sort By' options={sortOptions} onChange={this.handleChange}/>
+          <Dropdown placeholder='Order' options={orderOptions} onChange={this.handleChange}/>
+        </div>
         { this.state.visibleMovies.map((movie, i) => (
           <Card key={i} style={cardCSS}>
             <span onClick={(e) => { this.handleDelete(movie._id) }}>x</span>
