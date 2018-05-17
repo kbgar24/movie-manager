@@ -22,6 +22,16 @@
   width: 300px;
 }
 
+.searchBar {
+  max-width: 70%;
+  margin: 0px auto;
+}
+
+.cardContainer {
+  max-width: 70%;
+  margin: 0px auto;
+}
+
 .actorListDiv h3 {
   text-decoration: underline;
 }
@@ -68,7 +78,6 @@
   background-color: #141414 !important;
 }
 
-
 .ui.menu .ui.dropdown .menu>.item {
   color: white !important;
 }
@@ -104,4 +113,4 @@ div.ui div.homeFlix.item.header {
   font-size: 22px;
 }
 
-div.ui.item.dropdown
+.addMovieForm

@@ -94,7 +94,7 @@ export default class Search extends Component {
   render() {
     const { value } = this.state
     return (
-      <div>
+      <div className='searchBar'>
         <Form>
           <Form.Group widths='equal'>
             <Form.Field control={Input} label='Title' placeholder='Title' value={this.state.title} onChange={this.debouncedHandleChange} />

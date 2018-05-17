@@ -71,10 +71,12 @@ export default class Library extends Component {
 
   render() {
     return (
-      <div style={cardContainer}>
+      <div>
         <div>
           { this.state.showSearch && <Search updateVisibleMovies={this.updateVisibleMovies} movies={this.state.movies}/> }
         </div>
+        <div className='cardContainer'>
+
         { this.state.visibleMovies.map((movie, i) => (
           <Card key={i} style={cardCSS}>
             <span onClick={(e) => { this.handleDelete(movie._id) }}>x</span>
@@ -110,6 +112,8 @@ export default class Library extends Component {
             </Card.Content>
           </Card>
       ))}
+        </div>
+      
       </div>
     )
   }
