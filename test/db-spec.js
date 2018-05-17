@@ -1,23 +1,22 @@
-// const URI_TEST = 'mongodb://kindHealth:kindHealth@ds137207.mlab.com:37207/movies-test';
-// // const request = require('request');
-// const expect = require('chai').expect;
-// // const chai = require('chai');
-// // const sinon = require('sinon');
-// // const Movie = require('../db/models/movie');
-// // const queries = require('../db/queries');
-// const mongoose = require('mongoose');
+const URI_TEST = 'mongodb://kindHealth:kindHealth@ds137207.mlab.com:37207/movies-test';
+const should = require('chai').should();
+// const chai = require('chai');
+// const sinon = require('sinon');
+const Movie = require('../db/models/movie');
+const queries = require('../db/queries');
+const mongoose = require('mongoose');
 
-// mongoose.connect(URI_TEST)
-//   .then(() => { console.log('✅  Successfully connected to Mongodb'); })
-//   .catch((e) => { console.error('⚠️ Error connected to MongoDB: ', e); });
+mongoose.connect(URI_TEST)
+  .then(() => { console.log('✅  Successfully connected to Mongodb'); })
+  .catch((e) => { console.error('⚠️ Error connected to MongoDB: ', e); });
 
-// const db = mongoose.connection;
+const db = mongoose.connection;
 
-// const movieInfo = {
-//   actor: 'No Name',
-//   title: 'Bad Title',
-//   genre: 'horror',
-// }
+const movieInfo = {
+  actor: 'No Name',
+  title: 'Bad Title',
+  genre: 'horror',
+}
 
 // describe("Movie Model Tests", function () {
 
@@ -49,7 +48,22 @@
 // });
 
 describe('Mongo DB', function () {
-  it('should add movies to db');
+  
+  it('should add movies to db', function(done){
+    this.timeout(10000)
+    queries.addMovie(movieInfo)
+    .then(() => {
+      console.log('then')
+      Movie.find({}, (err, results) => {
+        if (err) { done(err) }
+        results.length.should.equal(1);
+        done();
+      })
+    })
+    .catch((e) => done(e))
+  });
+
+
   it('should delete movies from db');
   it('should return all movies from db');
 
