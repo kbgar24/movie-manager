@@ -21,16 +21,7 @@ const starStyle = {
   marginTop: '-25px',
 }
 
-const sortOptions = [
-  { key: '1', value: 'TITLE', text: 'Title' },
-  { key: '2', value: 'RELEASE', text: 'Release Date' },
-  { key: '3', value: 'CREATED', text: 'Date Added' },
-];
 
-const orderOptions = [
-  { key: '1', value: 1, text: 'Ascedending' },
-  { key: '2', value: -1, text: 'Descending' },
-]
 
 
 export default class Library extends Component {
@@ -83,10 +74,6 @@ export default class Library extends Component {
       <div style={cardContainer}>
         <div>
           { this.state.showSearch && <Search updateVisibleMovies={this.updateVisibleMovies} movies={this.state.movies}/> }
-        </div>
-        <div>
-          <Dropdown placeholder='Sort By' options={sortOptions} onChange={this.handleChange}/>
-          <Dropdown placeholder='Order' options={orderOptions} onChange={this.handleChange}/>
         </div>
         { this.state.visibleMovies.map((movie, i) => (
           <Card key={i} style={cardCSS}>

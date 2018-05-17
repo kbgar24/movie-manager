@@ -30,3 +30,18 @@
   overflow: auto;
   height: 300px;
 }
+
+.actorSpan {
+  font-size: 13px;
+  color: green;
+  font-style: italic;
+  padding-left: 10px;
+}
+
+.addMovieForm .ui.form div.field {
+  margin-bottom: 20px;
+}
+
+.addMovieForm .ui.form div.actorField {
+  margin-bottom: 0px;
+}

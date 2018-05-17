@@ -5,7 +5,7 @@ import { Provider, connect } from 'react-redux';
 import store from './store';
 
 import MainPage from './mainPage';
-import Navbar from './components/navbar';
+import Navbar from './containers/navbarContainer';
 import MovieForm from './containers/movieFormContainer';
 import Search from './components/search';
 import Library from './containers/libraryContainer';

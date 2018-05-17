@@ -89,7 +89,11 @@ export default class MovieForm extends Component {
   }
 
   render() {
-    const { value } = this.state
+    const { actors, title, rating, genre, year, mpaa, actor } = this.state
+    const visibility = this.state.actor ? 'visible' : 'hidden';
+    const actorGiven = actors.length || actor;
+    const showSubmit = actorGiven && title && rating && genre && year && mpaa;
+    console.log('actor: ', this.state.actor);
     return (
       <div>
         <h1 style={{margin: '20px'}}>Add New Film</h1>
@@ -113,11 +117,12 @@ export default class MovieForm extends Component {
           <Form.Field control={Select} label='MPAA' options={mpaaRatingOptions} placeholder='MPAA' value={this.state.mpaa} onChange={this.handleChange} />
             </div>
           <div>
-          <Form.Field control={Input} label='Actor' placeholder='Actor' value={this.state.actor} onChange={this.handleChange} />
+          <Form.Field control={Input} label='Actor' placeholder='Actor' value={this.state.actor} onChange={this.handleChange} className='actorField' />
+          <span className='actorSpan' style={{ visibility }}>Press Enter to save Actor to Actor List</span>
           <Button onClick={this.handleAddActor} style={{display: 'none'}}></Button>
           </div>
         {/* </Form.Group> */}
-        <Form.Field control={Button} onClick={this.handleSubmit}>Submit</Form.Field>
+        { showSubmit && <Form.Field control={Button} onClick={this.handleSubmit} style={{ marginTop: '20px' }}>Submit</Form.Field> }
       </Form>
       </div>
       <div className='actorListDiv'>
