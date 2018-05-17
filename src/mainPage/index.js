@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import MovieFormContainer from '../containers/movieFormContainer';
 import LibraryContainer from '../containers/libraryContainer';
+import Navbar from '../components/navbar';
 
 export default class MainPage extends Component {
   constructor() {
@@ -12,6 +13,7 @@ export default class MainPage extends Component {
     console.log(this.state); 
     return (
       <div>
+        <Navbar />
         <MovieFormContainer />
         <hr/>
         <LibraryContainer />
