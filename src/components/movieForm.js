@@ -63,7 +63,8 @@ export default class MovieForm extends Component {
   }
 
   handleSubmit = () => {
-    const { actors, title, year, genre, rating, mpaa } = this.state;
+    const { actors, title, year, genre, rating, mpaa, actor } = this.state;
+    !actors.length && actor && actors.push(actor);
     const movieInfo = { actors, title, year, genre, rating, mpaa };
     console.log('movieInfo: ', movieInfo);
     this.props.addMovie(movieInfo);
@@ -82,10 +83,6 @@ export default class MovieForm extends Component {
   handleDelete = (i) => {
     const { actors } = this.state;
     const newActors = !i ? [] : actors.slice().splice(i, 1);
-    console.log('i: ', i);
-    console.log('actors: ', actors)
-    console.log('newActors: ', newActors)
-    console.log('delete!');
     this.setState({
       actors: newActors,
     })
