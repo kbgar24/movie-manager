@@ -59,7 +59,7 @@ app.get('/api/getMovies', (req, res) => {
 })
 
 app.get('*', (req, res) => {
-  res.sendStatus(404).end();
+  res.sendFile(path.join(DIST_DIR, 'index.html'));
 });
 
 
