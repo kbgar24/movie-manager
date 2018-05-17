@@ -1,0 +1,32 @@
+.addMovieForm {
+  max-width: 500px;
+  margin: 100px auto;
+  display: inline-block;
+  width: 400px;
+  left: 50px;
+  margin-left: 200px;
+}
+
+.actorListDiv {
+  display: inline-block;
+  top: 0px;
+  /* top: -500px; */
+  position: relative;
+  /* left: 50px; */
+  margin-left: 50px;
+  /* border: 2px solid black; */
+  /* border-radius: 2px; */
+  /* min-height: 300px; */
+  /* overflow: auto; */
+  height: 300px;
+  width: 300px;
+}
+
+.actorListDiv h3 {
+  text-decoration: underline;
+}
+
+.actorList {
+  overflow: auto;
+  height: 300px;
+}

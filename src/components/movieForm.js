@@ -79,31 +79,71 @@ export default class MovieForm extends Component {
     
   }
 
+  handleDelete = (i) => {
+    const { actors } = this.state;
+    const newActors = !i ? [] : actors.slice().splice(i, 1);
+    console.log('i: ', i);
+    console.log('actors: ', actors)
+    console.log('newActors: ', newActors)
+    console.log('delete!');
+    this.setState({
+      actors: newActors,
+    })
+  }
+
   render() {
     const { value } = this.state
     return (
       <div>
-      <List>
-        { 
-          this.state.actors.map((actor, i) => (
-            <List.Item key={i}>{actor}</List.Item>
-          )) 
-        }
-      </List>
-      <Form>
-        <Form.Group widths='equal'>
+        <h1 style={{margin: '20px'}}>Add New Film</h1>
+        <div className='addMovieContent'>
+      <div className='addMovieForm'>
+      <Form size='huge'>
+        {/* <Form.Group widths='equal'> */}
+          <div>
           <Form.Field control={Input} label='Title' placeholder='Title' value={this.state.title} onChange={this.handleChange} />
+          </div>
+            <div>
           <Form.Field control={Input} label='Year' placeholder='Year' value={this.state.year} onChange={this.handleChange} />
+            </div>
+            <div>
           <Form.Field control={Select} label='Genre' options={genreOptions} placeholder='Genre' value={this.state.genre} onChange={this.handleChange} />
+            </div>
+            <div>
           <Form.Field control={Select} label='Rating' options={ratingOptions} placeholder='Rating' value={this.state.rating} onChange={this.handleChange} />
+            </div>
+            <div>
           <Form.Field control={Select} label='MPAA' options={mpaaRatingOptions} placeholder='MPAA' value={this.state.mpaa} onChange={this.handleChange} />
-          
+            </div>
+          <div>
           <Form.Field control={Input} label='Actor' placeholder='Actor' value={this.state.actor} onChange={this.handleChange} />
-          <Button onClick={this.handleAddActor}>Add Actors</Button>
-        </Form.Group>
+          <Button onClick={this.handleAddActor} style={{display: 'none'}}></Button>
+          </div>
+        {/* </Form.Group> */}
         <Form.Field control={Button} onClick={this.handleSubmit}>Submit</Form.Field>
       </Form>
+      </div>
+      <div className='actorListDiv'>
+            <h3>
+              Actor List
+            </h3>
+              <List className='actorList'>
+                {
+                  this.state.actors.map((actor, i) => (
+                    <List.Item 
+                      key={i}
+                      onClick={() => {this.handleDelete(i)}}
+                      style={{ cursor: 'pointer' }}
+                    >
+                      {actor}
+                    </List.Item>
+                  ))
+                }
+              </List>
+                </div>
         </div>
+      </div>
+        
     )
   }
 }
