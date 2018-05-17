@@ -10,23 +10,5 @@ const db = mongoose.connection;
 
 db.on('error', console.error.bind(console, 'MongoDB connection error: '));
 
-const movieSchema = new mongoose.Schema({
-  title: String,
-  genre: String,
-  rating: String,
-  year: String,
-  mpaa: String,
-  actors: [],
-  imageUrl: String,
-  createdAt: {
-    type: Date,
-    default: Date.now,
-  },
-});
 
-const Movie = mongoose.model('movie', movieSchema);
-
-module.exports = {
-  db,
-  Movie
-};
+module.exports = db;

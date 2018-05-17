@@ -1,7 +1,6 @@
 const express = require('express');
 const path = require('path');
 const morgan = require('morgan');
-const db = require('../db');
 const queries = require('../db/queries');
 const bodyParser = require('body-parser');
 
