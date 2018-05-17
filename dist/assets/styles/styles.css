@@ -45,3 +45,63 @@
 .addMovieForm .ui.form div.actorField {
   margin-bottom: 0px;
 }
+
+.ui.secondary.menu {
+  background-color: #141414;
+}
+
+.ui.secondary.menu a.item, div.ui.item.dropdown {
+  color: #e5e5e5;
+  font-size: 16px;
+  margin-top: 7px;
+}
+.ui.secondary.menu a.item:hover, div.ui.item.dropdown:hover  {
+  color: grey !important;
+}
+
+.ui.secondary.menu a.item.active, div.ui.item.dropdown.active {
+/* .ui.secondary.menu .active.item { */
+  color: grey !important;
+}
+
+.dropdown .menu.transition.visible{
+  background-color: #141414 !important;
+}
+
+
+.ui.menu .ui.dropdown .menu>.item {
+  color: white !important;
+}
+
+.ui.menu .ui.dropdown .menu>.item.active, .ui.menu .ui.dropdown .menu>.item:hover {
+  color: grey !important;
+}
+
+
+.menu.transition.visible .item {
+  color: white !important;
+}
+
+.menu.transition.visible .item:hover, .menu.transition.visible .item.active {
+  color: white !important;
+}
+
+body {
+  background-color: black;
+  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif
+  
+}
+
+.ui.card {
+  background-color: grey;
+  border: 1px solid grey;
+  border: none;
+  border-radius: 0px;
+}
+
+div.ui div.homeFlix.item.header {
+  color: red;
+  font-size: 22px;
+}
+
+div.ui.item.dropdown

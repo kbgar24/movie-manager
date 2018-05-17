@@ -34,10 +34,11 @@ export default class Navbar extends Component {
 
   render() {
     const { activeItem } = this.state
-
+    // const location = this.context.router.getCurrentParams;
+    // console.log('location: ', location);
     return (
-      <Menu secondary>
-        <Menu.Item header>Homeflix</Menu.Item>
+      <Menu secondary color={'black'}>
+        <Menu.Item className='homeFlix' header>Homeflix</Menu.Item>
         <Link to='/'>
           <Menu.Item name='library' active={activeItem === 'aboutUs'} onClick={this.handleItemClick} />
         </Link>
