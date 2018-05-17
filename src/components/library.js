@@ -73,6 +73,10 @@ export default class Library extends Component {
     return (
       <div>
         <div>
+          <h1 className='pageHeader'>{ this.state.showSearch ? 'Advanced Search' : 'Library'} </h1>
+        </div>
+        <div className='seperatorDiv'></div>
+        <div>
           { this.state.showSearch && <Search updateVisibleMovies={this.updateVisibleMovies} movies={this.state.movies}/> }
         </div>
         <div className='cardContainer'>
@@ -101,7 +105,7 @@ export default class Library extends Component {
               <Card.Description>
                 <p><strong>Genre: </strong>{movie.genre}</p>
                 <strong>Starring: </strong>
-                <p style={{  }}>
+                <p className='actorParagraph'>
                   { 
                     movie.actors.join(', ')
                   }

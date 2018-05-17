@@ -4,12 +4,13 @@
   display: inline-block;
   width: 400px;
   left: 50px;
-  margin-left: 200px;
+  margin-left: 30%;
+  margin-top: 50px
 }
 
 .actorListDiv {
   display: inline-block;
-  top: 0px;
+  top: -200px;
   /* top: -500px; */
   position: relative;
   /* left: 50px; */
@@ -20,11 +21,45 @@
   /* overflow: auto; */
   height: 300px;
   width: 300px;
+   color: white;
+  background-color: #141414;
+  border-radius: 2px;
+  padding-top: 20px;
+  text-align: center;
 }
+
+
 
 .searchBar {
   max-width: 70%;
   margin: 0px auto;
+}
+
+.pageHeader {
+  color: white;
+  margin-left: 15%;
+  font-size: 35px;
+}
+
+div.filmSubmitBtn button.ui.button {
+    margin-top: 30px;
+    background-color: #141414;
+    color: white;
+    min-height: 2em;
+    font-size: 1.1em;
+}
+
+.actorParagraph {
+  height: 2.2em;
+  line-height: 1.1em;
+  overflow: auto;
+}
+
+.seperatorDiv {
+  width: 70%;
+  margin: 0px auto;
+  height: 3px;
+  background-color: white;
 }
 
 .cardContainer {
@@ -32,13 +67,11 @@
   margin: 0px auto;
 }
 
-.actorListDiv h3 {
-  text-decoration: underline;
-}
+
 
 .actorList {
   overflow: auto;
-  height: 300px;
+  height: 220px;
 }
 
 .actorSpan {
@@ -113,4 +146,6 @@ div.ui div.homeFlix.item.header {
   font-size: 22px;
 }
 
-.addMovieForm
+.addMovieForm{
+
+}

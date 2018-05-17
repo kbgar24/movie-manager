@@ -96,7 +96,10 @@ export default class MovieForm extends Component {
     console.log('actor: ', this.state.actor);
     return (
       <div>
-        <h1 style={{margin: '20px'}}>Add New Film</h1>
+        <div>
+          <h1 className='pageHeader'>Add New Film</h1>
+        </div>
+        <div className='seperatorDiv'></div>
         <div className='addMovieContent'>
       <div className='addMovieForm'>
       <Form size='huge'>
@@ -122,7 +125,7 @@ export default class MovieForm extends Component {
           <Button onClick={this.handleAddActor} style={{display: 'none'}}></Button>
           </div>
         {/* </Form.Group> */}
-        { showSubmit && <Form.Field control={Button} onClick={this.handleSubmit} style={{ marginTop: '20px' }}>Submit</Form.Field> }
+              {showSubmit && <Form.Field control={Button} onClick={this.handleSubmit} className='filmSubmitBtn'>Submit</Form.Field> }
       </Form>
       </div>
       <div className='actorListDiv'>
