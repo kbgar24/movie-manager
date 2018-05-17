@@ -11,7 +11,8 @@
   "nodemonConfig": {
     "ignore": [
       "src/*",
-      "dist/*"
+      "dist/*",
+      "test/"
     ]
   },
   "repository": "https://github.com/kbgar24/movie-manager.git",

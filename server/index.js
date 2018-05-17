@@ -3,6 +3,7 @@ const path = require('path');
 const morgan = require('morgan');
 const queries = require('../db/queries');
 const bodyParser = require('body-parser');
+const db = require('../db');
 
 const app = express();
 
@@ -23,9 +24,9 @@ app.post('/api/addMovie', (req, res) => {
   const { movieInfo } = req.body;
   console.log('movieInfo: ', movieInfo);
   queries.addMovie(movieInfo)
-  .then((response) => {
+  .then(({id}) => {
     console.log('Successfully saved new movie to DB');
-    res.end();
+    res.send({id}).end();
   })
   .catch((e) => {
     console.error('Error saving movie to DB: ', e);
