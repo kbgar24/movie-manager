@@ -15,7 +15,7 @@ const CLIENT_DIR = path.join(__dirname, "../src/");
 
 const test = process.env.NODE_ENV === 'test'
 
-const port = test ? 3001 : 3000;
+const port = test ? 3001 : process.env.PORT ? process.env.PORT : 3000;
 
 /*-------- Express Middleware --------- */
 !test && app.use(morgan('dev'));
