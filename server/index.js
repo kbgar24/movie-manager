@@ -11,7 +11,6 @@ const app = express();
 const oldLogger = console.log;
 
 const DIST_DIR = path.join(__dirname, "../dist");
-const CLIENT_DIR = path.join(__dirname, "../src/");
 
 const test = process.env.NODE_ENV === 'test'
 
