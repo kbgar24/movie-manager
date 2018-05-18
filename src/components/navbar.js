@@ -47,11 +47,6 @@ export default class Navbar extends Component {
             <Dropdown.Item onClick={() => { this.handleChange('order', -1) }}>Descending</Dropdown.Item>
           </Dropdown.Menu>
         </Dropdown>
-        <Menu.Menu position='right'>
-          <Menu.Item>
-            <Input icon='search' placeholder='Search...' />
-          </Menu.Item>
-        </Menu.Menu>
       </Menu>
     )
   }

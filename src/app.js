@@ -4,7 +4,6 @@ import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import { Provider, connect } from 'react-redux';
 
 import store from './store';
-import MainPage from './mainPage';
 import Navbar from './containers/navbarContainer';
 import MovieForm from './containers/movieFormContainer';
 import Search from './components/search';

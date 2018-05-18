@@ -1,26 +1,17 @@
-const chai = require('chai')
-const should = require('chai').should();
 const app = require('../server');
+const chai = require('chai')
 const request = require('supertest');
-
-const baseUrl = 'http://127.0.0.1:3001'
+const should = require('chai').should();
 
 const movieInfo = {
   title: 'FAKE_MOVIE_TITLE',
 };
-
-// const server = app.listen('3001');
-
-// request(app);
-
-// console.log('server: ', server);
 
 describe('Node/Express Server', function(){
 
   let _id;
 
   it('should return index.html from root route', function(done){
-    // this.timeout(30000)
     request(app)
       .get('/')
       .expect(200)

@@ -12,13 +12,10 @@ const oldLogger = console.log;
 
 const DIST_DIR = path.join(__dirname, "../dist");
 const CLIENT_DIR = path.join(__dirname, "../src/");
-// console.log('process.env.NODE_ENV: ', process.env.NODE_ENV);
-// process.env.NODE_ENV === 'test' && (console.log = () => {});
 
 const test = process.env.NODE_ENV === 'test'
 
 const port = test ? 3001 : 3000;
-// const port = process.env.NODE_ENV === 'test' ? 3001: 3000;
 
 /*-------- Express Middleware --------- */
 !test && app.use(morgan('dev'));
@@ -79,8 +76,6 @@ app.get('*', (req, res) => {
 const server = app.listen(port, () => {
   console.log(`Listening on port ${port}`);
 });
-
-console.log = oldLogger;
 
 module.exports = app;
 
