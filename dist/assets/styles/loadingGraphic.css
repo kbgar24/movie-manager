@@ -1,12 +1,14 @@
 @import url(https://fonts.googleapis.com/css?family=Oswald:700);
 html,
-logo-container {
+#logo-container {
   height: 100%;
   width: 100%;
   overflow: hidden;
 }
-
-logo-container {
+#app {
+  display: none;
+}
+#logo-container {
   height: 100%;
   width: 100%;
   overflow: hidden;

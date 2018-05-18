@@ -13,7 +13,7 @@
 </head>
 
 <body>
-    <div class='logo-container'>
+  <div id='logo-container'>
     <input class="retrigger" type="radio" name="rerun" id="retrigger--1" />
     <input class="retrigger" type="radio" name="rerun" id="retrigger--2" checked="checked" />
       <div class="logo">
@@ -27,9 +27,14 @@
         <span>X</span>
       </div>
   </div>
-  <div id="app"></div>
+  <div id="app" display="none"></div>
   <script src="/vendor.js"></script>
   <script src="/main.js"></script>
 </body>
-
+  <script>
+    setTimeout(() => {
+      document.getElementById('logo-container').style.display = 'none'
+      document.getElementById('app').style.display = 'block';
+    }, 6000)
+  </script>
 </html>
