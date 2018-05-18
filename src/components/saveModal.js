@@ -21,6 +21,7 @@ export default class SaveModal extends Component {
     const progress = !isSaving ? 100 : prevState.progress;
     return ({
     ...prevState,
+    progress,
     isSaving,
     saveError,
   })

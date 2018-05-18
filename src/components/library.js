@@ -83,7 +83,7 @@ export default class Library extends Component {
 
         { this.state.visibleMovies.map((movie, i) => (
           <Card key={i} style={cardCSS}>
-            <span onClick={(e) => { this.handleDelete(movie._id) }}>x</span>
+            <div class="deleteX" onClick={(e) => { this.handleDelete(movie._id) }}>x</div>
             <Image style={{ height: '300px', width: '200px', margin: '0px auto' }} src={ movie.imageUrl } />
             <Card.Content>
               <Card.Header>
@@ -103,7 +103,7 @@ export default class Library extends Component {
               
               </Card.Meta>
               <Card.Description>
-                <p><strong>Genre: </strong>{movie.genre}</p>
+                  <p><strong>Genre: </strong>{movie.genre.replace(/^\w/, c => c.toUpperCase())}</p>
                 <strong>Starring: </strong>
                 <p className='actorParagraph'>
                   { 
