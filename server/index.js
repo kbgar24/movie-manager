@@ -8,15 +8,20 @@ const queries = require('../db/queries/movieQueries');
 
 const app = express();
 
+const oldLogger = console.log;
+
 const DIST_DIR = path.join(__dirname, "../dist");
 const CLIENT_DIR = path.join(__dirname, "../src/");
 // console.log('process.env.NODE_ENV: ', process.env.NODE_ENV);
 // process.env.NODE_ENV === 'test' && (console.log = () => {});
 
-const port = process.env.NODE_ENV === 'test' ? 3001: 3000;
+const test = process.env.NODE_ENV === 'test'
+
+const port = test ? 3001 : 3000;
+// const port = process.env.NODE_ENV === 'test' ? 3001: 3000;
 
 /*-------- Express Middleware --------- */
-app.use(morgan('dev'));
+!test && app.use(morgan('dev'));
 app.use(bodyParser.json())
 app.use(express.static(DIST_DIR));
 
@@ -32,7 +37,6 @@ app.post('/api/addMovie', (req, res) => {
   const { movieInfo } = req.body;
   queries.addMovie(movieInfo)
   .then(({id}) => {
-    console.log('Successfully saved new movie to DB');
     res.send({id}).end();
   })
   .catch((e) => {
@@ -45,7 +49,6 @@ app.post('/api/deleteMovie', (req, res) => {
   const { _id } = req.body;
   queries.deleteMovie(_id)
   .then((response) => {
-    console.log('Successfully deleted movie from DB!');
     res.end();
   })
   .catch((e) => {
@@ -76,6 +79,8 @@ app.get('*', (req, res) => {
 const server = app.listen(port, () => {
   console.log(`Listening on port ${port}`);
 });
+
+console.log = oldLogger;
 
 module.exports = app;
 
