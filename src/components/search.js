@@ -50,6 +50,7 @@ export default class Search extends Component {
       }
       return true;
     })
+    console.log('this.props; ', this.props);
     this.props.updateVisibleMovies(visibleMovies);
   }
 

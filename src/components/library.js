@@ -56,7 +56,7 @@ export default class Library extends Component {
   }
 
   render() {
-    const { showSearch, updateVisibleMovies, movies, visibleMovies } = this.state;
+    const { showSearch, movies, visibleMovies } = this.state;
     return (
       <div>
         <div>
@@ -64,7 +64,7 @@ export default class Library extends Component {
         </div>
         <div className='seperatorDiv'></div>
         <div>
-          { showSearch && <Search updateVisibleMovies={updateVisibleMovies} movies={movies}/> }
+          { showSearch && <Search updateVisibleMovies={this.updateVisibleMovies} movies={movies}/> }
         </div>
         <div className='cardContainer'>
 

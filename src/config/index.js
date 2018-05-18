@@ -1,11 +1,18 @@
 export const genreOptions = [
+  { key: 'null', text: '', value: '' },
   { key: 'h', text: 'Horror', value: 'horror' },
   { key: 'a', text: 'Action', value: 'action' },
   { key: 'd', text: 'Drama', value: 'drama' },
   { key: 'c', text: 'Comedy', value: 'comedy' },
+  { key: 'an', text: 'Animation', value: 'animation' },
+  { key: 'm', text: 'Musical', value: 'musical' },
+  { key: 'do', text: 'Documentary', value: 'documentary' },
+  { key: 'we', text: 'Western', value: 'western' },
+  { key: 's', text: 'Science Fiction', value: 'science' },
 ];
 
 export const ratingOptions = [
+  { key: 'null', text: '', value: '' },
   { key: '1', text: '5', value: '5' },
   { key: '2', text: '4', value: '4' },
   { key: '3', text: '3', value: '3' },
@@ -14,6 +21,7 @@ export const ratingOptions = [
 ];
 
 export const mpaaRatingOptions = [
+  { key: 'null', text: '', value: '' },
   { key: '1', text: 'G', value: 'G' },
   { key: '2', text: 'PG', value: 'PG' },
   { key: '3', text: 'PG-13', value: 'PG-13' },
