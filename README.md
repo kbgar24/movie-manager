@@ -1,4 +1,4 @@
-#HomeFlix
+# HomeFlix
 The world's premiere home movie management platform.
 
 ## Overview
