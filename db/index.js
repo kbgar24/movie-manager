@@ -1,5 +1,5 @@
 const mongoose = require('mongoose');
-const { URI_Test, URI_PROD } = require('../secrets');
+const { URI_TEST, URI_PROD } = require('../secrets');
 
 const URI = process.env.NODE_ENV === 'test' ? URI_TEST : URI_PROD;
 

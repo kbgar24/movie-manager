@@ -1,3 +1,4 @@
+const db = require('../db');
 const should = require('chai').should();
 const Movie = require('../db/models/movie');
 const queries = require('../db/queries/movieQueries');
@@ -9,7 +10,10 @@ const movieInfo = {
 }
 
 beforeEach(function(done) {
-  Movie.remove({}, err => err ? done(err) : done())
+  Movie.remove({}, (err) => {
+    if (err) { done(err) }
+    done();
+  })
 })
 
 describe('Mongo DB', function () {

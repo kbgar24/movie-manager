@@ -10,7 +10,10 @@ const app = express();
 
 const DIST_DIR = path.join(__dirname, "../dist");
 const CLIENT_DIR = path.join(__dirname, "../src/");
-const port = process.env.PORT || 3000;
+// console.log('process.env.NODE_ENV: ', process.env.NODE_ENV);
+// process.env.NODE_ENV === 'test' && (console.log = () => {});
+
+const port = process.env.NODE_ENV === 'test' ? 3001: 3000;
 
 /*-------- Express Middleware --------- */
 app.use(morgan('dev'));
@@ -70,6 +73,9 @@ app.get('*', (req, res) => {
 
 
 /*-------- Server Initialization --------- */
-app.listen(port, () => {
+const server = app.listen(port, () => {
   console.log(`Listening on port ${port}`);
 });
+
+module.exports = app;
+

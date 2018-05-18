@@ -6,7 +6,7 @@
     "dev-build": "webpack --watch",
     "dev-start": "nodemon server",
     "start": "webpack && node server",
-    "test": "NODE_ENV=test && mocha"
+    "test": "NODE_ENV=test mocha"
   },
   "nodemonConfig": {
     "ignore": [
@@ -34,7 +34,8 @@
     "redux-logger": "^3.0.6",
     "redux-thunk": "^2.2.0",
     "semantic-ui-react": "^0.80.0",
-    "style-loader": "^0.21.0"
+    "style-loader": "^0.21.0",
+    "supertest": "^3.1.0"
   },
   "devDependencies": {
     "babel-core": "^6.26.0",
@@ -47,8 +48,8 @@
     "chai": "^4.1.2",
     "chai-http": "^4.0.0",
     "enzyme": "^3.3.0",
-    "node-sass": "^4.9.0",
     "mocha": "^5.1.1",
+    "node-sass": "^4.9.0",
     "sinon": "^5.0.7",
     "sinon-mongoose": "^2.1.1",
     "webpack": "^4.8.3",
