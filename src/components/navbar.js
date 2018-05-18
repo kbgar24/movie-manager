@@ -38,7 +38,7 @@ export default class Navbar extends Component {
     // console.log('location: ', location);
     return (
       <Menu secondary color={'black'}>
-        <Menu.Item className='homeFlix' header>Homeflix</Menu.Item>
+        <Menu.Item className='homeFlix' header>HomeFlix</Menu.Item>
         <Link to='/'>
           <Menu.Item name='library' active={activeItem === 'aboutUs'} onClick={this.handleItemClick} />
         </Link>
