@@ -5,6 +5,15 @@ const movieInfoUrl = title => {
   return `https://api.themoviedb.org/3/search/movie?api_key=c9778e67cdb7cdefca5d255f2c83edee&language=en-US&query=${formattedTitle}&page=1&include_adult=false`
 }
 
+export const savingMovie = () => ({ type: 'SAVING_MOVIE' })
+
+export const savedMovie = (hasError) => ({
+  type: 'SAVED_MOVIE',
+  payload: hasError,
+})
+
+export const clearSaveError = () => ({ type: 'CLEAR_SAVE_ERROR' });
+
 export const addMovie = movieInfo => (
   dispatch => (
     axios.get(movieInfoUrl(movieInfo.title))
@@ -15,11 +24,16 @@ export const addMovie = movieInfo => (
         ...movieInfo,
         imageUrl,
       }
+      dispatch(savingMovie())
       axios.post('/api/addMovie', { movieInfo: finalMovieInfo })
       .then(() => {
+        dispatch(savedMovie())
         dispatch(getMovies())
       })
-      .catch((e) => { console.error(e) })
+      .catch((e) => { 
+        console.error(e) 
+        dispatch(savedMovie(true))
+      })
     })
     .catch((e) => {
       console.error(e)

@@ -33,12 +33,25 @@
   font-size: 35px;
 }
 
-div.filmSubmitBtn button.ui.button {
+.modalBtnDiv {
+  display: flex;
+  justify-content: space-evenly;
+  margin-top: 20px;
+}
+
+div.filmSubmitBtn button.ui.button, div.content div.modalBtnDiv button {
     margin-top: 30px;
     background-color: #141414;
     color: white;
     min-height: 2em;
     font-size: 1.1em;
+    border-radius: 0px;
+}
+
+
+
+.homeflix.header {
+  background-color: black !important;
 }
 
 .actorParagraph {
@@ -133,9 +146,9 @@ body {
   border-radius: 0px;
 }
 
-div.ui div.homeFlix.item.header {
-  color: red;
-  font-size: 22px;
+div.ui div.homeFlix.item.header, .homeflix {
+  color: red !important;
+  font-size: 22px !important;
 }
 
 .addMovieForm{

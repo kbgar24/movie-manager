@@ -1,5 +1,7 @@
 const defaultState = {
-  movies: []
+  movies: [],
+  isSaving: false,
+  saveError: false,
 }
 
 const movieReducer = ( state = defaultState, action ) => {
@@ -23,6 +25,25 @@ const movieReducer = ( state = defaultState, action ) => {
         movies: state.movies.filter(({id}) => id !== action.payload)
       };
     
+    case 'SAVING_MOVIE':
+      return {
+        ...state,
+        isSaving: true,
+      }
+
+    case 'SAVED_MOVIE':
+      return {
+        ...state,
+        isSaving: false,
+        saveError: !!action.payload
+      }
+
+    case 'CLEAR_SAVE_ERROR': 
+      return {
+        ...state,
+        saveError: false,
+      }
+
     case 'SORT_BY_TITLE':
       const moviesTitle = state.movies.slice().sort((a,b) => {
           const titleA = a.title.toLowerCase();

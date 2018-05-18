@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
-import { Button, Checkbox, Form, Input, Radio, Select, TextArea, List } from 'semantic-ui-react';
-import axios from 'axios';
+import { Button, Checkbox, Form, Input, Radio, Select, TextArea, List, Progress } from 'semantic-ui-react';
+import SaveModal from '../containers/saveModalContainer';
 
 const genreOptions = [
   { key: 'h', text: 'Horror', value: 'horror' },
@@ -38,6 +38,7 @@ export default class MovieForm extends Component {
       rating: '',
       genre: '',
       mpaa: '',
+      showModal: false,
     }
   }
 
@@ -69,6 +70,7 @@ export default class MovieForm extends Component {
     console.log('movieInfo: ', movieInfo);
     this.props.addMovie(movieInfo);
     this.setState({
+      showModal: true,
       actor: '',
       title: '',
       rating: '',
@@ -86,6 +88,10 @@ export default class MovieForm extends Component {
     this.setState({
       actors: newActors,
     })
+  }
+
+  handleModalClose = () => {
+    this.setState({showModal: false});
   }
 
   render() {
@@ -147,6 +153,7 @@ export default class MovieForm extends Component {
               </List>
                 </div>
         </div>
+        <SaveModal showModal={this.state.showModal} handleModalClose={this.handleModalClose}/>
       </div>
         
     )

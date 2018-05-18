@@ -1,14 +1,7 @@
 const should = require('chai').should();
+// const db = require('../db');
 const Movie = require('../db/models/movie');
 const queries = require('../db/queries');
-const mongoose = require('mongoose');
-
-const URI_TEST = 'mongodb://kindHealth:kindHealth@ds137207.mlab.com:37207/movies-test';
-
-mongoose.connect(URI_TEST)
-  .catch((e) => { console.error('⚠️ Error connected to MongoDB: ', e); });
-
-const db = mongoose.connection;
 
 const movieInfo = {
   actor: 'No Name',
@@ -23,7 +16,7 @@ beforeEach(function(done) {
   })
 })
 
-describe('Mongo DB', function () {
+xdescribe('Mongo DB', function () {
   
   it('should add movies to db!', function(done){
     this.timeout(10000)
