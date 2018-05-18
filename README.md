@@ -5,10 +5,10 @@ The world's premiere home movie management platform.
 This full-stack application was built with **React**, **Node**, **Express** and **MongoDB**. 
 
 Additional Technologies: 
-..* [Redux](https://redux.js.org/) - Client-side state management
-..* [Semantic-UI-React](https://react.semantic-ui.com/introduction) - Elegant UI framework
-..* [Mongoose](http://mongoosejs.com/) - MongoDB ORM
-..* [Mocha](https://mochajs.org/) - Test Framework
+* [Redux](https://redux.js.org/) - Client-side state management
+* [Semantic-UI-React](https://react.semantic-ui.com/introduction) - Elegant UI framework
+* [Mongoose](http://mongoosejs.com/) - MongoDB ORM
+* [Mocha](https://mochajs.org/) - Test Framework
 
 I would also like to credit Gregory Adams, whose well-written [blog post](https://hugogiraudel.com/2015/04/15/netflix-logo-in-css/) was instrumental in creating the loading/splash page. 
 
