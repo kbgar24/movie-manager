@@ -4,7 +4,6 @@ const webpack = require('webpack');
 const DIST_DIR = path.join(__dirname, "dist");
 const CLIENT_DIR = path.join(__dirname, "src");
 
-
 module.exports = {
   mode: 'development',
   context: CLIENT_DIR,
@@ -28,23 +27,16 @@ module.exports = {
     }
   },
   module: {
-    rules: [{
-      loader: 'babel-loader',
-      test: /\.js$/,
-      exclude: /(node_modules)/,
-    }, {
-      loaders: ['style-loader', 'css-loader'],
-      test: /\.css$/,
+    rules: [
+      {
+        loader: 'babel-loader',
+        test: /\.js$/,
+        exclude: /(node_modules)/,
       }, {
-        test: /\.scss$/,
-        use: [
-          "style-loader", 
-          "css-loader",
-          "sass-loader" 
-        ]
-    }]
+        loaders: ['style-loader', 'css-loader'],
+        test: /\.css$/,
+      }
+    ]
   },
-  plugins: [
-  ],
   devtool: 'cheap-module-eval-source-map',
 };

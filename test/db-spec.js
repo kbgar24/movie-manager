@@ -1,7 +1,6 @@
 const should = require('chai').should();
-// const db = require('../db');
 const Movie = require('../db/models/movie');
-const queries = require('../db/queries');
+const queries = require('../db/queries/movieQueries');
 
 const movieInfo = {
   actor: 'No Name',
@@ -10,20 +9,17 @@ const movieInfo = {
 }
 
 beforeEach(function(done) {
-  Movie.remove({}, (err) => {
-    if (err) { done(err) }
-    done();
-  })
+  Movie.remove({}, err => err ? done(err) : done())
 })
 
-xdescribe('Mongo DB', function () {
+describe('Mongo DB', function () {
   
   it('should add movies to db!', function(done){
     this.timeout(10000)
     queries.addMovie(movieInfo)
     .then(() => {
       Movie.find({}, (err, results) => {
-        if (err) { done(err) }
+        if (err) { return done(err) }
         results.length.should.equal(1);
         done();
       })
@@ -34,7 +30,7 @@ xdescribe('Mongo DB', function () {
 
   it('should delete movies from db!', function(done){
     Movie.create(movieInfo, (err, res) => {
-      if (err) { done(err) }
+      if (err) { return done(err) }
       const id = res._id;
       queries.deleteMovie(id)
       .then(() => {
@@ -50,7 +46,7 @@ xdescribe('Mongo DB', function () {
   
   it('should return all movies from db!', function(done){
     Movie.insertMany([movieInfo, movieInfo, movieInfo], (err, res) => {
-      if (err) { done(err) }
+      if (err) { return done(err) }
       queries.getAllMovies()
       .then((results) => {
         results.length.should.equal(3);
@@ -59,5 +55,4 @@ xdescribe('Mongo DB', function () {
       .catch((e) => done(e))
     })
   });
-
 })

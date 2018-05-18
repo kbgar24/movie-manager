@@ -3,11 +3,10 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "build": "webpack --watch",
-    "start": "node server",
+    "dev-build": "webpack --watch",
     "dev-start": "nodemon server",
-    "test": "NODE_ENV=test && mocha --compilers js:babel-core/register --require babel-polyfill",
-    "sass": "node-sass --watch scss -o dist/assets/styles"
+    "start": "webpack && node server",
+    "test": "NODE_ENV=test && mocha"
   },
   "nodemonConfig": {
     "ignore": [
@@ -21,20 +20,10 @@
   "license": "MIT",
   "dependencies": {
     "axios": "^0.17.1",
-    "babel-core": "^6.26.0",
-    "babel-loader": "^7.1.2",
-    "babel-plugin-transform-class-properties": "^6.24.1",
-    "babel-preset-env": "^1.6.1",
-    "babel-preset-react": "^6.24.1",
-    "babel-preset-stage-2": "^6.24.1",
     "body-parser": "^1.18.2",
-    "chai": "^4.1.2",
-    "chai-http": "^4.0.0",
     "css-loader": "^0.28.11",
-    "enzyme": "^3.3.0",
     "express": "^4.16.2",
     "lodash": "^4.17.10",
-    "mocha": "^5.1.1",
     "mongoose": "^5.1.1",
     "morgan": "^1.9.0",
     "react": "^16.2.0",
@@ -44,17 +33,25 @@
     "redux": "^4.0.0",
     "redux-logger": "^3.0.6",
     "redux-thunk": "^2.2.0",
-    "semantic-ui": "^2.3.1",
     "semantic-ui-react": "^0.80.0",
-    "sinon": "^5.0.7",
-    "sinon-mongoose": "^2.1.1",
-    "style-loader": "^0.21.0",
-    "webpack": "^4.8.3"
+    "style-loader": "^0.21.0"
   },
   "devDependencies": {
+    "babel-core": "^6.26.0",
+    "babel-loader": "^7.1.2",
+    "babel-plugin-transform-class-properties": "^6.24.1",
     "babel-polyfill": "^6.26.0",
+    "babel-preset-env": "^1.6.1",
+    "babel-preset-react": "^6.24.1",
+    "babel-preset-stage-2": "^6.24.1",
+    "chai": "^4.1.2",
+    "chai-http": "^4.0.0",
+    "enzyme": "^3.3.0",
     "node-sass": "^4.9.0",
-    "sass-loader": "^7.0.1",
+    "mocha": "^5.1.1",
+    "sinon": "^5.0.7",
+    "sinon-mongoose": "^2.1.1",
+    "webpack": "^4.8.3",
     "webpack-cli": "^2.1.3",
     "webpack-serve": "^1.0.2"
   }

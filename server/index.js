@@ -1,28 +1,32 @@
-const express = require('express');
-const path = require('path');
-const morgan = require('morgan');
-const queries = require('../db/queries');
 const bodyParser = require('body-parser');
+const express = require('express');
+const morgan = require('morgan');
+const path = require('path');
+
 const db = require('../db');
+const queries = require('../db/queries/movieQueries');
 
 const app = express();
 
 const DIST_DIR = path.join(__dirname, "../dist");
 const CLIENT_DIR = path.join(__dirname, "../src/");
-const port = process.env.PORT || 3001;
+const port = process.env.PORT || 3000;
 
+/*-------- Express Middleware --------- */
+app.use(morgan('dev'));
 app.use(bodyParser.json())
 app.use(express.static(DIST_DIR));
-app.use(morgan('dev'));
 
+
+/*-------- Root Route --------- */
 app.get('/', (req, res) => {
   res.sendFile(path.join(DIST_DIR, 'index.html'));
 });
 
 
+/*-------- API Routes --------- */
 app.post('/api/addMovie', (req, res) => {
   const { movieInfo } = req.body;
-  console.log('movieInfo: ', movieInfo);
   queries.addMovie(movieInfo)
   .then(({id}) => {
     console.log('Successfully saved new movie to DB');
@@ -58,11 +62,14 @@ app.get('/api/getMovies', (req, res) => {
   })
 })
 
+
+/*-------- Fallback Route --------- */
 app.get('*', (req, res) => {
   res.sendFile(path.join(DIST_DIR, 'index.html'));
 });
 
 
+/*-------- Server Initialization --------- */
 app.listen(port, () => {
   console.log(`Listening on port ${port}`);
 });

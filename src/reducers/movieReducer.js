@@ -6,11 +6,13 @@ const defaultState = {
 
 const movieReducer = ( state = defaultState, action ) => {
   switch(action.type){
+
     case 'SET_MOVIES':
       return {
         ...state,
         movies: action.payload,
       };
+
     case 'ADD_MOVIE': 
       return {
         ...state,
@@ -19,6 +21,7 @@ const movieReducer = ( state = defaultState, action ) => {
           action.payload,
         ]
       };
+
     case 'DELETE_MOVIE': 
       return {
         ...state,
@@ -67,6 +70,7 @@ const movieReducer = ( state = defaultState, action ) => {
           ...state,
           movies: moviesRelease,
         }
+
     case 'SORT_BY_CREATED':
       const moviesCreated = state.movies.slice().sort((a,b) => {
           const dateA= Date.parse(a.createdAt);
@@ -80,14 +84,7 @@ const movieReducer = ( state = defaultState, action ) => {
         }
 
     default: return state;
-    }
+  }
 }
-
-//alphabetical 
-// Year Rleasesed (asc)
-// Year Rleasesed (Desc)
-// Recently Added
-
-//
 
 export default movieReducer;

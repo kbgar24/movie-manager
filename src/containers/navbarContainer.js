@@ -6,7 +6,4 @@ const mapDispatchToProps = dispatch => ({
   sortBy: (criteria, order) => dispatch(sortBy(criteria, order)),
 });
 
-export default connect(
-  null,
-  mapDispatchToProps,
-)(Navbar);
+export default connect(null, mapDispatchToProps)(Navbar);

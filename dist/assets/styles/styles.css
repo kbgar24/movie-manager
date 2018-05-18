@@ -17,6 +17,13 @@ body {
   margin-top: 50px
 }
 
+.notFound {
+  color: white;
+  text-align: center;
+  font-size: 18px;
+  margin-top: 30px;
+}
+
 .actorListDiv {
   display: inline-block;
   top: -200px;

@@ -1,14 +1,6 @@
 import React, { Component } from 'react'
 import { Card, Icon, Image, Dropdown } from 'semantic-ui-react'
-import axios from 'axios';
 import Search from './search';
-
-
-const cardContainer = {
-  // display: 'flex',
-  // flexWrap: 'wrap',
-  // justifyContent: 'center',
-};
 
 const cardCSS = {
   display: 'inline-block',
@@ -21,9 +13,6 @@ const starStyle = {
   marginTop: '-25px',
 }
 
-
-
-
 export default class Library extends Component {
   constructor(props){
     super(props);
@@ -34,7 +23,6 @@ export default class Library extends Component {
       order: 1,
       showSearch: false,
     }
- 
   }
 
   componentDidMount(){
@@ -57,11 +45,9 @@ export default class Library extends Component {
   }
 
   handleChange = (e, {placeholder, value}) => {
-    if (placeholder === 'Sort By'){
-      this.setState({ sortBy: value }, this.handleSort)
-    } else {
-      this.setState({ order: value }, this.handleSort)
-    }
+    placeholder === 'Sort By'
+    ? this.setState({ sortBy: value }, this.handleSort)
+    : this.setState({ order: value }, this.handleSort)
   }
 
   handleSort = () => {
@@ -70,18 +56,19 @@ export default class Library extends Component {
   }
 
   render() {
+    const { showSearch, updateVisibleMovies, movies, visibleMovies } = this.state;
     return (
       <div>
         <div>
-          <h1 className='pageHeader'>{ this.state.showSearch ? 'Advanced Search' : 'Library'} </h1>
+          <h1 className='pageHeader'>{ showSearch ? 'Advanced Search' : 'Library'} </h1>
         </div>
         <div className='seperatorDiv'></div>
         <div>
-          { this.state.showSearch && <Search updateVisibleMovies={this.updateVisibleMovies} movies={this.state.movies}/> }
+          { showSearch && <Search updateVisibleMovies={updateVisibleMovies} movies={movies}/> }
         </div>
         <div className='cardContainer'>
 
-        { this.state.visibleMovies.map((movie, i) => (
+        { visibleMovies.map((movie, i) => (
           <Card key={i} style={cardCSS}>
             <div className="deleteX" onClick={(e) => { this.handleDelete(movie._id) }}>x</div>
             <Image style={{ height: '300px', width: '200px', margin: '0px auto' }} src={ movie.imageUrl } />
@@ -95,29 +82,24 @@ export default class Library extends Component {
                     ))
                   }
                 </div>
-
               </Card.Header>
               <Card.Meta>
                 {movie.year}
                 <Image style={{ height: '18px', display: 'block' }} src={`/assets/img/${movie.mpaa}.png`} />
-              
               </Card.Meta>
               <Card.Description>
                   <p><strong>Genre: </strong>{movie.genre.replace(/^\w/, c => c.toUpperCase())}</p>
                 <strong>Starring: </strong>
                 <p className='actorParagraph'>
-                  { 
-                    movie.actors.join(', ')
-                  }
+                  { movie.actors.join(', ') }
                 </p>
-        </Card.Description>
-            </Card.Content>
-            <Card.Content extra>
-            </Card.Content>
-          </Card>
-      ))}
+              </Card.Description>
+              </Card.Content>
+              <Card.Content extra>
+              </Card.Content>
+            </Card>
+        ))}
         </div>
-      
       </div>
     )
   }

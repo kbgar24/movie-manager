@@ -38,11 +38,6 @@ export const addMovie = movieInfo => (
     .catch((e) => {
       console.error(e)
     })
-    // axios.post('api/addMovie', { movieInfo })
-    // .then(() => {
-    //   dispatch(getMovies())
-    // })
-    // .catch((e) => { console.error(e) })
   )
 );
 
@@ -71,7 +66,6 @@ export const getMovies = () => (
   dispatch => (
     axios.get('/api/getMovies')
     .then((res) => {
-      console.log('res: ', res);
       dispatch(setMovies(res.data))
     })
     .catch((e) => { console.error(e) })
