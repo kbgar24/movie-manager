@@ -1,10 +1,11 @@
 import React, { Component } from 'react'
 import { Button, Checkbox, Form, Input, Radio, Select, TextArea, List, Progress } from 'semantic-ui-react';
+import uuid from 'uuid';
 import SaveModal from '../containers/saveModalContainer';
 import { genreOptions, mpaaRatingOptions, ratingOptions } from '../config';
 
 export default class MovieForm extends Component {
-  
+
   state = {
     actors: [],
     actor: '',
@@ -18,8 +19,9 @@ export default class MovieForm extends Component {
 
   handleAddActor = (e) => {
     const { actor, actors } = this.state;
+    const actorObj = { name: actor, id: uuid() }
     actor && this.setState({
-      actors: [...actors, actor],
+      actors: [ ...actors, actorObj ],
       actor: '',
     });
   }
@@ -36,8 +38,9 @@ export default class MovieForm extends Component {
     this.setState({ [type]: value });
   }
 
-  handleSubmit = () => {
-    const { actors, title, year, genre, rating, mpaa, actor } = this.state;
+  handleSubmit = (e) => {
+    const { actors:actorsRaw, title, year, genre, rating, mpaa, actor } = this.state;
+    const actors = actorsRaw.map(({name}) => name);
     !actors.length && actor && actors.push(actor);
     const movieInfo = { actors, title, year, genre, rating, mpaa };
     this.props.addMovie(movieInfo);
@@ -53,9 +56,9 @@ export default class MovieForm extends Component {
     })
   }
 
-  handleDelete = (i) => {
+  handleDelete = (id) => {
     const { actors } = this.state;
-    const newActors = !i ? [] : actors.slice().splice(i, 1);
+    const newActors = actors.filter(actor => actor.id !== id);
     this.setState({
       actors: newActors,
     })
@@ -94,13 +97,13 @@ export default class MovieForm extends Component {
             <h3>Actor List</h3>
             <List className='actorList'>
               {
-                this.state.actors.map((actor, i) => (
+                this.state.actors.map(({name, id}) => (
                   <List.Item 
-                    key={i}
-                    onClick={() => {this.handleDelete(i)}}
+                    key={id}
+                    onClick={() => {this.handleDelete(id)}}
                     style={{ cursor: 'pointer' }}
                   >
-                    {actor}
+                    {name}
                   </List.Item>
                 ))
               }
