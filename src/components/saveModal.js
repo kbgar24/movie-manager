@@ -2,6 +2,8 @@ import React, { Component } from 'react'
 import { Button, Header, Image, Modal, Progress } from 'semantic-ui-react';
 import { Link } from 'react-router-dom';
 
+let intervalId;
+
 export default class SaveModal extends Component {
   
   constructor(props){
@@ -9,12 +11,16 @@ export default class SaveModal extends Component {
     this.state = {
       progress: 20,
       isSaving: props.isSaving,
-      saveError: props.saveError
+      saveError: props.saveError,
     }
   }
 
   componentDidMount(){
-    this.handleIncrementProgress();
+    intervalId = this.handleIncrementProgress();
+  }
+
+  componentWillUnmount(){
+    clearInterval(intervalId);
   }
 
   static getDerivedStateFromProps = ({ isSaving, saveError, showModal }, prevState) => {
@@ -34,7 +40,7 @@ export default class SaveModal extends Component {
       const newProgress = progress + (distance / 5);
       this.setState({ progress: newProgress });
     };
-    setInterval(incrementProgress, 750);
+    return setInterval(incrementProgress, 750);
   }
 
   render(){
